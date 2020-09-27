@@ -19,8 +19,7 @@ public class 两两交换链表中的节点 {
         Aug3.ListNode firstNode = head;
         Aug3.ListNode secondNode = head.next;
 
-        firstNode = swapPairs(secondNode);
-        firstNode.next  = swapPairs(secondNode.next);
+        firstNode.next = swapPairs(secondNode.next);
         secondNode.next = firstNode;
 
         return secondNode;
