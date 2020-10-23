@@ -34,7 +34,7 @@ public class 翻转链表二 {
         head.next = reverseBetween(head.next, m - 1, n - 1);
         return head;
     }
-        //这个全反链表的递归很秀！！！
+        //这个翻转链表的递归很秀！！！
     ListNode reverse(ListNode head) {
         if (head.next == null) return head;
         ListNode last = reverse(head.next);
