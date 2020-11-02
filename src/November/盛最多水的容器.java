@@ -15,15 +15,14 @@ public class 盛最多水的容器 {
         for (int i = 0; i < j; i++) {
             if (height[i] <= height[j]) {
                 temp = (j - i) * height[i];
-                val = temp > val ? temp : val;
-                continue;
+                val = Math.max(temp, val);
             } else while (j > i) {
                 temp = (j - i) * height[j];
-                val = temp > val ? temp : val;
+                val = Math.max(temp, val);
                 j--;
                 if (height[j] > height[i]) {
                     temp = (j - i) * height[i];
-                    val = temp > val ? temp : val;
+                    val = Math.max(temp, val);
                     break;
                 }
             }
