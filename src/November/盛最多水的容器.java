@@ -23,6 +23,7 @@ public class 盛最多水的容器 {
                 if (height[j] > height[i]) {
                     temp = (j - i) * height[i];
                     val = Math.max(temp, val);
+
                     break;
                 }
             }
