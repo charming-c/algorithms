@@ -30,14 +30,17 @@ public class 合并区间 {
             }
         });
         for(int i=0; i<len-1; i++){
+            //这里有两种情况是不可以合并的
             if(intervals[i][1] < intervals[i+1][0]) continue;
             if(intervals[i][1] > intervals[i+1][0] && intervals[i][0]>intervals[i+1][1]) continue;
+            //可以合并的话，就很简单的赋值就好
             intervals[i][0] = intervals[i+1][0] =
                     intervals[i][0]<intervals[i+1][0]?intervals[i][0]:intervals[i+1][0];
 
             intervals[i][1] = intervals[i+1][1] =
                     intervals[i][1]>intervals[i+1][1]?intervals[i][1]:intervals[i+1][1];
         }
+        //这个循环用来测算返回数组的长度
         for(int j = 0; j<len-1; j++){
             if(intervals[j][0] == intervals[j+1][0] && j!=len-2){
                 continue;
