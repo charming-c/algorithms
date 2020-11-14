@@ -1,5 +1,7 @@
 package extend;
 
+import java.util.Stack;
+
 public class Hotel {
     public void goToWakeUp(CallBack callBack) {
         try {
