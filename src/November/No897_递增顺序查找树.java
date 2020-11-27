@@ -36,6 +36,9 @@ package November;
 //                        \
 //        9
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class No897_递增顺序查找树 {
 
     public class TreeNode {
@@ -59,14 +62,22 @@ public class No897_递增顺序查找树 {
 
     class Solution {
         public TreeNode increasingBST(TreeNode root) {
-            TreeNode node1, node2;
-            if (root == null || (root.left == null && root.right == null))
-                return root;
-            node1 = increasingBST(root.left);
-            node1.right = root;
-            node2 = increasingBST(root.right);
-            root.right = node2;
-            return root;
+            List<Integer> vals = new ArrayList();
+            inorder(root, vals);
+            TreeNode ans = new TreeNode(0), cur = ans;
+            for (int v : vals) {
+                cur.right = new TreeNode(v);
+                cur = cur.right;
+            }
+            return ans.right;
         }
+
+        public void inorder(TreeNode node, List<Integer> vals) {
+            if (node == null) return;
+            inorder(node.left, vals);
+            vals.add(node.val);
+            inorder(node.right, vals);
+        }
+
     }
 }
