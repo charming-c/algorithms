@@ -72,6 +72,7 @@ public class No897_递增顺序查找树 {
             return ans.right;
         }
 
+        //这个方法就是递归的中序遍历，只是外加了一个数组，将遍历后的元素放到一个数组中去维护
         public void inorder(TreeNode node, List<Integer> vals) {
             if (node == null) return;
             inorder(node.left, vals);
