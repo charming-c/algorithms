@@ -19,6 +19,9 @@ package November;
 //        输出：[[1],[2,3],[4,5,7],[8]]
 //        返回的是一个链表的头节点构成的节点
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class 特定深度节点链表 {
 
     public class TreeNode {
@@ -41,14 +44,33 @@ public class 特定深度节点链表 {
     }
 
     public ListNode[] listOfDepth(TreeNode tree) {
-        int length = getLength(tree);
-        ListNode[] list = new ListNode[length];
-        ListNode node = new ListNode(tree.val);
-        list[0] = node;
-        list[1] = getNode(tree);
-        return list;
+        if(tree == null) return new ListNode[0];
+        Queue<TreeNode> queue = new LinkedList<>();
+        ListNode[] ans = new ListNode[getDeep(tree)];
+        ListNode head = new ListNode(-1);
+        int j = 0;
+        queue.offer(tree);
+        while(!queue.isEmpty()){
+            ListNode cur = head;
+            int size = queue.size();
+            for(int i = 0; i<size; i++){
+                TreeNode node = queue.poll();
+                if(node.left != null)
+                    queue.offer(node.left);
+                if(node.right != null)
+                    queue.offer(node.right);
+                ListNode n = new ListNode(node.val);
+                cur.next = n;
+                cur = n;
+                if(i == 0) ans[j++] = n;
+            }
+        }
+        return ans;
     }
-
+    public int getDeep(TreeNode tree){
+        if(tree == null) return 0;
+        else return Math.max(getDeep(tree.left),getDeep(tree.right))+1;
+    }
     // public ListNode getNode(TreeNode tree){
 
     //     if(tree.left != null && tree.right != null){
