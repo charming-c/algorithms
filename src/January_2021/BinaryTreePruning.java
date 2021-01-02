@@ -11,6 +11,8 @@ package January_2021;
 //        输出: [1,null,0,null,1]
 
 
+import java.util.Arrays;
+
 public class BinaryTreePruning {
     public TreeNode pruneTree(TreeNode root) {
         if (root == null) return root;
