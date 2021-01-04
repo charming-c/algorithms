@@ -12,12 +12,20 @@ package January_2021;
 //        输出：1->2->2->4->3->5
 
 public class PartitionList_86 {
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
     public ListNode partition(ListNode head, int x) {
         if (head == null || head.next == null) {
             return head;
         }
 
-        // 给链表的头节点加上一个空节点，方便后面比较值
+        // 给链表的头节点加上一个负节点，方便后面比较值
         ListNode head2 = new ListNode(-1);
         head2.next = head;
         head = head2;
@@ -51,13 +59,28 @@ public class PartitionList_86 {
         }
         return head.next;
     }
-}
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
+    // 官方题解属实比我妙多了
+    class Solution {
+        public ListNode partition(ListNode head, int x) {
+            ListNode small = new ListNode(0);
+            ListNode smallHead = small;
+            ListNode large = new ListNode(0);
+            ListNode largeHead = large;
+            while (head != null) {
+                if (head.val < x) {
+                    small.next = head;
+                    small = small.next;
+                } else {
+                    large.next = head;
+                    large = large.next;
+                }
+                head = head.next;
+            }
+            large.next = null;
+            small.next = largeHead.next;
+            return smallHead.next;
+        }
     }
+
 }
