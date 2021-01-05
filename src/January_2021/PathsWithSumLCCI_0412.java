@@ -23,13 +23,14 @@ public class PathsWithSumLCCI_0412 {
     // 说实话不配作为中等题
     // 说实话挺简单的，但我为什么写的这么，慢。还有今天的数字逻辑考得一团糟，不知道怎么办了，保研好难啊，加油冲
     public int pathSum(TreeNode root, int sum) {
-        if(root == null) return 0;
-        else return isSum(root,sum)+pathSum(root.left,sum)+pathSum(root.right,sum);
+        if (root == null) return 0;
+        else return isSum(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
     }
-    public int isSum(TreeNode root, int sum){
-        if(root == null) return 0;
-        if(sum == root.val) return 1+
-                isSum(root.left,sum-root.val)+isSum(root.right,sum-root.val);
-        else return isSum(root.left,sum-root.val)+isSum(root.right,sum-root.val);
+
+    public int isSum(TreeNode root, int sum) {
+        if (root == null) return 0;
+        if (sum == root.val) return 1 +
+                isSum(root.left, sum - root.val) + isSum(root.right, sum - root.val);
+        else return isSum(root.left, sum - root.val) + isSum(root.right, sum - root.val);
     }
 }
