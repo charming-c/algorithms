@@ -1,11 +1,15 @@
 package extend;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Test {
 
+    
+
     public static void main(String []args) throws ClassNotFoundException, NoSuchMethodException {
+
 
 //        Employee e;
 //        Apple apple = new Apple();
@@ -70,9 +74,12 @@ public class Test {
 //        System.out.println(example.getClass());
 //        System.out.println(example.hashCode());
 //        System.out.println(example.toString());
-        Random a = new Random();
-        int b = a.nextInt(250);
-        System.out.println(b);
+//        Random a = new Random();
+//        int b = a.nextInt(250);
+//        System.out.println(b);
+
+//        int x = countBalls(1,10);
+//        System.out.println(x);
     }
 
 }
