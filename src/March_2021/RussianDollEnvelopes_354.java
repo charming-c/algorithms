@@ -25,7 +25,7 @@ public class RussianDollEnvelopes_354 {
         }
 
         int n = envelopes.length;
-        Arrays.sort(envelopes,(e1,e2)->{
+        Arrays.sort(envelopes, (e1, e2) -> {
             if (e1[0] != e2[0]) {
                 return e1[0] - e2[0];
             } else {
