@@ -39,5 +39,4 @@ public class FindMajorityElementFCCI_17_10 {
             return major;
         else return -1;
     }
-
 }
