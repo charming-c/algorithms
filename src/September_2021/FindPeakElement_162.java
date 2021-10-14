@@ -27,18 +27,17 @@ public class FindPeakElement_162 {
     public int findPeakElement(int[] nums) {
         int left = 0;
         int right = nums.length;
-        int midth = (left + right)/2;
+        int midth = (left + right) / 2;
 
-        while(left < right){
-            if(midth == left || midth == right) return midth;
-            else{
-                if(nums[midth] > nums[midth - 1]){
+        while (left < right) {
+            if (midth == left || midth == right) return midth;
+            else {
+                if (nums[midth] > nums[midth - 1]) {
                     left = midth;
-                }
-                else{
+                } else {
                     right = midth;
                 }
-                midth = (left + right)/2;
+                midth = (left + right) / 2;
             }
         }
 
