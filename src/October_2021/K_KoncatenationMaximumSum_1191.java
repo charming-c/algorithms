@@ -23,9 +23,6 @@ package October_2021;
 //        Input: arr = [-1,-2], k = 7
 //        Output: 0
 //
-//        来源：力扣（LeetCode）
-//        链接：https://leetcode-cn.com/problems/k-concatenation-maximum-sum
-//        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 public class K_KoncatenationMaximumSum_1191 {
     public int kConcatenationMaxSum(int[] arr, int k) {
