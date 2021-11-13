@@ -1,6 +1,4 @@
-//给你一个整数数组 nums 和一个整数 k ，请你统计并返回该数组中和为 k 的连续子数组的个数。
-
- 
+package November_2021;//给你一个整数数组 nums 和一个整数 k ，请你统计并返回该数组中和为 k 的连续子数组的个数。
 
 //示例 1：
 
@@ -15,6 +13,8 @@
 //链接：https://leetcode-cn.com/problems/subarray-sum-equals-k
 //著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
+
+import java.util.HashMap;
 
 class SubarraySumEqualsK_560{
     public int subarraySum(int[] nums, int k) {
