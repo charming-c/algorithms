@@ -1,31 +1,64 @@
 package TestPackage;
 
-public class VolatileTest {
-    public static volatile Integer race = 0;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public static synchronized void increase() {
-        race++;
+public class VolatileTest {
+    static List<Integer> list = new ArrayList<>();
+    static int len;
+    static int ret[];
+    public static int[] findEvenNumbers(int[] digits) {
+        len = digits.length;
+        ret = new int[len];
+        Arrays.fill(ret,0);
+        find(0,digits);
+        int ans[] = new int[len];
+        for(int i = 0; i<len; i++){
+            ans[i] = list.get(i);
+        }
+        return ans;
+    }
+    public static void find(int num, int[] digits){
+        if(num == 0){
+            for(int i = 0; i<len; i++){
+                if(digits[i] == 0) continue;
+                else{
+                    num = num * 10 + digits[i];
+                    ret[i] = 1;
+                    find(num,digits);
+                }
+                ret[i] = 0;
+            }
+        }
+        else if(num > 0 && num < 10){
+            for(int i = 0; i<len; i++){
+                if(ret[i] == 1) continue;
+                else{
+                    num = num * 10 + digits[i];
+                    ret[i] = 1;
+                    find(num, digits);
+                }
+                ret[i] = 0;
+            }
+        }
+        else if(num >= 10 && num < 100){
+            for(int i = 0; i<len; i++){
+                if(ret[i] == 1 || digits[i] % 2 == 1) continue;
+                else{
+                    num = num * 10 + digits[i];
+                    list.add(num);
+                }
+            }
+            return;
+        }
+        else{
+            return;
+        }
     }
 
-    private static final int THREAD_COUNT = 20;
-
     public static void main(String[] args) {
-        Thread[] threads = new Thread[THREAD_COUNT];
-        for(int i = 0; i<THREAD_COUNT; i++) {
-            threads[i] = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for(int i = 0; i<10000; i++){
-                        increase();
-                    }
-                }
-            });
-            threads[i].start();
-        }
-
-        while(Thread.activeCount()>2){
-            Thread.yield();
-        }
-        System.out.println(race);
+        int[] b = {2,1,3,0};
+        int[] a = findEvenNumbers(b);
     }
 }
