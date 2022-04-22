@@ -1,3 +1,3 @@
-- leetcode
+- Leetcode
 - acwing
 - codeforces
