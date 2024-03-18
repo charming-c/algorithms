@@ -15,37 +15,33 @@ public class NumberofSubarraysThatMatchaPatternII_3036 {
                 res[i] = 0;
             else res[i] = -1;
         }
-        int cnt = 0;
+        int pre = 0;
         int[] next = new int[m];
         Arrays.fill(next, 0);
         for (int i = 1; i < m; i++) {
-            int v = pattern[i];
-            while (cnt > 0 && pattern[cnt] != v) {
-                cnt = next[cnt - 1];
+            while(pre > 0 && pattern[i] != pattern[pre]) {
+                pre = next[pre - 1];
             }
-            if (pattern[cnt] == v) {
-                cnt++;
+            if(pattern[i] == pattern[pre]) {
+                pre++;
             }
-            next[i] = cnt;
+            next[i] = pre;
 
         }
         int p = 0;
         int cur = 0;
         int ans = 0;
         while (p < n) {
-            if (cur == m) {
-                cur = next[cur - 1];
-                ans++;
-            }
             if (res[p] == pattern[cur]) {
                 p++;
                 cur++;
-                continue;
-            } else {
-                if (cur == 0) {
-                    p++;
-                    continue;
-                }
+            }
+            else if(cur > 0) {
+                cur = next[cur - 1];
+            }
+            else p++;
+            if(cur == m) {
+                ans++;
                 cur = next[cur - 1];
             }
 
